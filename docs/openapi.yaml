@@ -1,8 +1,3 @@
-# API Reference
+# Updated
 
-Test OpenAPI content pushed by Syscribe integration test.
-
-## Endpoints
-
--   GET /health — Returns server status
--   POST /drafts — Create a new draft
+Second push.
