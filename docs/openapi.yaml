@@ -1,3 +1,25 @@
-# Updated
+# Syscribe API Reference
 
-Second push.
+The Syscribe REST API powers the web app and is available to external integrations.
+
+## Authentication
+
+All API requests require a Bearer token from Clerk. Obtain a session token by calling `getToken({ organizationId })` from the Clerk SDK.
+
+## Endpoints
+
+### GET /drafts
+
+Returns pending documentation drafts grouped by PR (CommitEvent). Supports pagination via `page` and `limit` query params.
+
+### POST /drafts/:id/approve
+
+Approves a draft. Creates a final revision snapshot and updates status to APPROVED. Triggers the deployment pipeline.
+
+### POST /drafts/:id/deploy
+
+Enqueues a deployment job for an approved draft. Returns 202 with a deploymentId immediately. The worker resolves the target from RepoDocConfig and pushes asynchronously.
+
+### GET /dashboard
+
+Returns activity stats and recent CommitEvents for the authenticated org.
